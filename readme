@@ -1,0 +1,1 @@
+The Prototype.py file contains a Neural Network prototype having a 1-4-4-2 configuration. It has a tanh activation. Also, it can be extended to X-4-4-2 configuration with minute changes. It uses a feedforward architecture. Sigmoid function is used to generate output between 0 and 1.

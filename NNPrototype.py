@@ -1,37 +1,5 @@
 '''Created and Developed by Akhil.K'''
 '''Find me at blitzkrieg.akhil@gmail.com'''
-'''Encoded input where 1 - access.log, 2 - anaconda.log, 3 - boot.log, 4 - cron.log, 5 - error.log, 6 - firewall.log'''
-'''7 - messages, 8 - yum.log, 9 - Unknown'''
-#Capsule for NNPrototype.py
-feed=[]
-def encoder(log):
-    if 'GET' in log:
-        feed.append(-0.8)
-    elif 'anaconda' in log:
-        feed.append(-0.6)
-    elif '[0m]' in log:
-        feed.append(-0.4)
-    elif 'cron' in log.lower():
-        feed.append(-0.2)
-    elif 'AH0' in log:
-        feed.append(0)
-    elif 'ERROR:' in log:
-        feed.append(0.2)
-    elif 'ambari-server' in log and 'cron' not in log.lower():
-        feed.append(0.4)
-    elif 'Updated:' in log or 'Installed:' in log or 'Erased:' in log:
-        feed.append(0.6)
-    elif '':
-        feed.append()
-    else:
-        feed.append(0.8)
-def capsule():
-    log=input("Enter the log")
-    while log:
-        encoder(log)
-        log=input("Enter the log")
-        encoder(log)
-
 import random
 import numpy as np
 import math
@@ -113,15 +81,18 @@ expected_output=[]   #Edit this
 
 def epochs(epochs):
     #Training phase
+    n=int(input("Enter the number of inputs "))
     inputs=[]
     network = initialize_network()
     for i in range(epochs):
         inputs.append([])
-        inputs[i].append(feed[i])
+        for j in range(n):
+            inputs[i].append(int(input("Enter input ")))
         nodes = forward_propogation(network,inputs[i])
         network = back_propogation(network,nodes,expected_output[i],inputs[i])
     #Testing phase
-    #Enter something to test the neural network
+    #Enter the testing inputs
+    print(forward_propogation(network,[7])[2])
+
 #Enter number of epochs
-capsule()
-epochs(len(feed))
+epochs()	#Edit this

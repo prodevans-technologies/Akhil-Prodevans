@@ -10,11 +10,14 @@ lr = 0.3
 
 def sigmoid(x):
     # Calculates value of sigmoid function
-    result=[1/math.exp(i) for i in x]
-    result=np.array(result)
-    result=1+result
-    result=1/result
-    return result
+    ret=[]
+    for i in x:
+        result=math.exp(i)
+        result=np.array(result)
+        result=1+result
+        result=1/result
+        ret.append(result)
+    return ret
 
 def initialize_network(n_inputs=1, n_hidden1=4,n_hidden2=4, n_outputs=2):
     # Random initialization of weights

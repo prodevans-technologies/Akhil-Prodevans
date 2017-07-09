@@ -5,31 +5,31 @@
 #Capsule for NNPrototype.py
 feed=[]
 def encoder(log):
-    if 'GET' in log:
-        feed.append([1,0,0,0,0,0,0,0,0])
-    elif 'anaconda' in log:
-        feed.append([0,1,0,0,0,0,0,0,0])
-    elif '[0m]' in log:
-        feed.append([0,0,1,0,0,0,0,0,0])
-    elif 'cron' in log.lower():
-        feed.append([0,0,0,1,0,0,0,0,0])
-    elif 'AH0' in log:
-        feed.append([0,0,0,0,1,0,0,0,0])
-    elif 'ERROR:' in log:
-        feed.append([0,0,0,0,0,1,0,0,0])
-    elif 'ambari-server' in log and 'cron' not in log.lower():
-        feed.append([0,0,0,0,0,0,1,0,0])
-    elif 'Updated:' in log or 'Installed:' in log or 'Erased:' in log:
-        feed.append([0,0,0,0,0,0,0,1,0])
-    elif '':
-        feed.append()
-    else:
-        feed.append([0,0,0,0,0,0,0,0,1])
+    if log !='':
+        if 'GET' in log:
+            feed.append([1,0,0,0,0,0,0,0,0])
+            print(1)
+        elif 'anaconda' in log:
+            feed.append([0,1,0,0,0,0,0,0,0])
+        elif '[0m]' in log:
+            feed.append([0,0,1,0,0,0,0,0,0])
+        elif 'cron' in log.lower():
+            feed.append([0,0,0,1,0,0,0,0,0])
+        elif 'AH0' in log:
+            feed.append([0,0,0,0,1,0,0,0,0])
+        elif 'ERROR:' in log:
+            feed.append([0,0,0,0,0,1,0,0,0])
+        elif 'ambari-server' in log and 'cron' not in log.lower():
+            feed.append([0,0,0,0,0,0,1,0,0])
+        elif 'Updated:' in log or 'Installed:' in log or 'Erased:' in log:
+            feed.append([0,0,0,0,0,0,0,1,0])
+        else:
+            feed.append([0,0,0,0,0,0,0,0,1])
 def capsule():
-    log=input("Enter the log")
+    log=input("Enter the log ")
     while log:
         encoder(log)
-        log=input("Enter the log")
+        log=input("Enter the log ")
         encoder(log)
 
 import random
